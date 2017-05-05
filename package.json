@@ -1,0 +1,30 @@
+{
+	"name": "ReactNativeRelayModernReddit",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"start": "node node_modules/react-native/local-cli/cli.js start",
+		"test": "jest",
+		"update-schema": "./node_modules/.bin/fetch-schema https://us-west-2.api.scaphold.io/graphql/instagraph-app -f schema.graphql",
+		"relay": "relay-compiler --src ./src --schema schema.graphql",
+		"relayw": "relay-compiler --src ./src --schema schema.graphql --watch"
+	},
+	"dependencies": {
+		"lodash.get": "^4.4.2",
+		"react": "16.0.0-alpha.6",
+		"react-native": "0.43.4",
+		"react-relay": "dev"
+	},
+	"devDependencies": {
+		"babel-jest": "19.0.0",
+		"babel-plugin-relay": "dev",
+		"babel-preset-react-native": "1.9.1",
+		"fetch-schema": "^0.0.13",
+		"jest": "19.0.2",
+		"react-test-renderer": "16.0.0-alpha.6",
+		"relay-compiler": "dev"
+	},
+	"jest": {
+		"preset": "react-native"
+	}
+}

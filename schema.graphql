@@ -1,0 +1,3988 @@
+# Values for the AccessLevel enum
+enum AccessLevel {
+  admin
+  readwrite
+  readonly
+}
+
+input AddToUserRolesConnectionInput {
+  roleId: ID!
+  userId: ID!
+  accessLevel: AccessLevel!
+
+  # An opaque string used by frontend frameworks like relay to track requests and responses.
+  clientMutationId: String
+}
+
+type AddToUserRolesConnectionPayload {
+  # The mutated UserRoles.
+  changedUserRoles: UserRoles
+
+  # An edge containing the mutated UserRoles. Use this to update your client side cache.
+  changedEdge: UserRolesEdge
+
+  # A view port into your application.
+  viewer: Viewer
+
+  # An opaque string used by frontend frameworks like relay to track requests and responses.
+  clientMutationId: String
+}
+
+# An arbitrary object. AnyObject's are not type checked
+#                   and are always returned in their entirety.
+scalar AnyObject
+
+interface Blob {
+  blobMimeType: String
+  blobUrl: String
+}
+
+input ChangeUserPasswordInput {
+  id: ID!
+  oldPassword: String!
+  newPassword: String!
+
+  # An opaque string used by frontend frameworks like relay to track requests and responses.
+  clientMutationId: String
+}
+
+type ChangeUserPasswordPayload {
+  # The mutated User.
+  changedUser: User
+
+  # An edge containing the mutated User. Use this to update your client side cache.
+  changedEdge: UserEdge
+
+  # A view port into your application.
+  viewer: Viewer
+
+  # An opaque string used by frontend frameworks like relay to track requests and responses.
+  clientMutationId: String
+}
+
+input CreateFileInput {
+  name: String
+  blobFieldName: String!
+  clientMutationId: ID
+}
+
+type CreateFilePayload {
+  # The mutated File.
+  changedFile: File
+
+  # An edge containing the mutated File. Use this to update your client side cache.
+  changedEdge: FileEdge
+
+  # A view port into your application.
+  viewer: Viewer
+
+  # An opaque string used by frontend frameworks like relay to track requests and responses.
+  clientMutationId: String
+}
+
+input CreatePostInput {
+  subRedditId: ID
+  subReddit: CreateSubRedditInput
+  title: String!
+  url: String
+  clientMutationId: ID
+}
+
+type CreatePostPayload {
+  # The mutated Post.
+  changedPost: Post
+
+  # An edge containing the mutated Post. Use this to update your client side cache.
+  changedEdge: PostEdge
+
+  # A view port into your application.
+  viewer: Viewer
+
+  # An opaque string used by frontend frameworks like relay to track requests and responses.
+  clientMutationId: String
+}
+
+input CreateRoleInput {
+  name: String!
+  clientMutationId: ID
+}
+
+type CreateRolePayload {
+  # The mutated Role.
+  changedRole: Role
+
+  # An edge containing the mutated Role. Use this to update your client side cache.
+  changedEdge: RoleEdge
+
+  # A view port into your application.
+  viewer: Viewer
+
+  # An opaque string used by frontend frameworks like relay to track requests and responses.
+  clientMutationId: String
+}
+
+input CreateSubRedditInput {
+  name: String!
+  clientMutationId: ID
+}
+
+type CreateSubRedditPayload {
+  # The mutated SubReddit.
+  changedSubReddit: SubReddit
+
+  # An edge containing the mutated SubReddit. Use this to update your client side cache.
+  changedEdge: SubRedditEdge
+
+  # A view port into your application.
+  viewer: Viewer
+
+  # An opaque string used by frontend frameworks like relay to track requests and responses.
+  clientMutationId: String
+}
+
+input CreateUserInput {
+  password: Secret!
+  username: String!
+  clientMutationId: ID
+}
+
+type CreateUserPayload {
+  # The user's authentication token. Embed this under the
+  #           'Authorization' header with the format 'Bearer <token>'
+  #         
+  token: String
+
+  # The mutated User.
+  changedUser: User
+
+  # An edge containing the mutated User. Use this to update your client side cache.
+  changedEdge: UserEdge
+
+  # A view port into your application.
+  viewer: Viewer
+
+  # An opaque string used by frontend frameworks like relay to track requests and responses.
+  clientMutationId: String
+}
+
+# A range aggregation that is dedicated for date values.
+#       The main difference between this aggregation and the normal range
+#       aggregation is that the from and to values can be expressed in Date
+#       Math expressions, and it is also possible to specify a date format
+#       by which the from and to response fields will be returned. Note
+#       that this aggregation includes the from value and excludes the
+#       to value for each range
+#       
+input DateRangeInput {
+  # E.G. { "from": "now-10M/M" } means '>= now minus 10 months, rounded down to the start of the month.'
+  from: String
+
+  # E.G. { "to": "now-10M/M" } means '< now minus 10 months, rounded down to the start of the month.'
+  to: String
+}
+
+# The `DateTime` type represents a single point in time and is stored with
+#                   millisecond precision plus a time zone specified by ISO 8601. All types come
+#                   preloaded with createdAt and modifiedAt timestamps that are automatically managed
+#                   for you.
+scalar DateTime
+
+input DeleteFileInput {
+  id: ID!
+
+  # An opaque string used by frontend frameworks like relay to track requests and responses.
+  clientMutationId: String
+}
+
+type DeleteFilePayload {
+  # The mutated File.
+  changedFile: File
+
+  # An edge containing the mutated File. Use this to update your client side cache.
+  changedEdge: FileEdge
+
+  # A view port into your application.
+  viewer: Viewer
+
+  # An opaque string used by frontend frameworks like relay to track requests and responses.
+  clientMutationId: String
+}
+
+input DeletePostInput {
+  id: ID!
+
+  # An opaque string used by frontend frameworks like relay to track requests and responses.
+  clientMutationId: String
+}
+
+type DeletePostPayload {
+  # The mutated Post.
+  changedPost: Post
+
+  # An edge containing the mutated Post. Use this to update your client side cache.
+  changedEdge: PostEdge
+
+  # A view port into your application.
+  viewer: Viewer
+
+  # An opaque string used by frontend frameworks like relay to track requests and responses.
+  clientMutationId: String
+}
+
+input DeleteRoleInput {
+  id: ID!
+
+  # An opaque string used by frontend frameworks like relay to track requests and responses.
+  clientMutationId: String
+}
+
+type DeleteRolePayload {
+  # The mutated Role.
+  changedRole: Role
+
+  # An edge containing the mutated Role. Use this to update your client side cache.
+  changedEdge: RoleEdge
+
+  # A view port into your application.
+  viewer: Viewer
+
+  # An opaque string used by frontend frameworks like relay to track requests and responses.
+  clientMutationId: String
+}
+
+input DeleteSubRedditInput {
+  id: ID!
+
+  # An opaque string used by frontend frameworks like relay to track requests and responses.
+  clientMutationId: String
+}
+
+type DeleteSubRedditPayload {
+  # The mutated SubReddit.
+  changedSubReddit: SubReddit
+
+  # An edge containing the mutated SubReddit. Use this to update your client side cache.
+  changedEdge: SubRedditEdge
+
+  # A view port into your application.
+  viewer: Viewer
+
+  # An opaque string used by frontend frameworks like relay to track requests and responses.
+  clientMutationId: String
+}
+
+input DeleteUserInput {
+  id: ID!
+
+  # An opaque string used by frontend frameworks like relay to track requests and responses.
+  clientMutationId: String
+}
+
+type DeleteUserPayload {
+  # The mutated User.
+  changedUser: User
+
+  # An edge containing the mutated User. Use this to update your client side cache.
+  changedEdge: UserEdge
+
+  # A view port into your application.
+  viewer: Viewer
+
+  # An opaque string used by frontend frameworks like relay to track requests and responses.
+  clientMutationId: String
+}
+
+# A Scaphold User.
+type Field implements Node {
+  # A global id
+  id: ID!
+  name: String!
+  description: String
+  columnName: String
+  nonNull: Boolean
+  unique: Boolean
+  indexed: Boolean
+  type: String
+  ofType: String
+  ofTypeNonNull: Boolean
+  reverseName: String
+  defaultValue: AnyObject
+  isEditable: Boolean
+  through: String
+  position: Int
+}
+
+# The File type
+type File implements Node, Timestamped, Blob {
+  # The mimeType of the blob asset.
+  blobMimeType: String
+
+  # The name of the File. If no name is given, the uploaded file's name will be used.
+  name: String
+
+  # A pre-signed url to your file.
+  blobUrl: String
+
+  # When paired with the Node interface, this is an automatically managed
+  #           timestamp that is set whenever an object is mutated.
+  modifiedAt: DateTime!
+
+  # A globally unique ID.
+  id: ID!
+
+  # When paired with the Node interface, this is an automatically managed
+  #           timestamp that is set when an object is first created.
+  createdAt: DateTime!
+}
+
+type FileAggregations {
+  # Returns the number of objects in the connection.
+  count: Int
+
+  # The minimum value for the field
+  min: FileAggregationsMin
+
+  # The maximum value for the field
+  max: FileAggregationsMax
+}
+
+type FileAggregationsMax {
+  blobMimeType: String
+  name: String
+  blobUrl: String
+  modifiedAt: DateTime
+  createdAt: DateTime
+}
+
+type FileAggregationsMin {
+  blobMimeType: String
+  name: String
+  blobUrl: String
+  modifiedAt: DateTime
+  createdAt: DateTime
+}
+
+input FileBlobMimeTypeSubscriptionFilters {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: String
+
+  # Greater than.
+  gt: String
+
+  # Greater than or equal to.
+  gte: String
+
+  # Less than.
+  lt: String
+
+  # Less than or equal to.
+  lte: String
+
+  # Not equal to.
+  ne: String
+
+  # A two element tuple describing a range of values.
+  between: [String]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [String]
+
+  # A list of values to include.
+  in: [String]
+
+  # A list of values to exclude.
+  notIn: [String]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # A regular expression to match on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.
+  matches: String
+
+  # A regular expression to reject on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.
+  notMatches: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+input FileBlobMimeTypeWhereArgs {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: String
+
+  # Not equal to.
+  ne: String
+
+  # Greater than.
+  gt: String
+
+  # Greater than or equal to.
+  gte: String
+
+  # Less than.
+  lt: String
+
+  # Less than or equal to.
+  lte: String
+
+  # A two element tuple describing a range of values.
+  between: [String]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [String]
+
+  # A list of values to include.
+  in: [String]
+
+  # A list of values to exclude.
+  notIn: [String]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+input FileBlobUrlSubscriptionFilters {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: String
+
+  # Greater than.
+  gt: String
+
+  # Greater than or equal to.
+  gte: String
+
+  # Less than.
+  lt: String
+
+  # Less than or equal to.
+  lte: String
+
+  # Not equal to.
+  ne: String
+
+  # A two element tuple describing a range of values.
+  between: [String]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [String]
+
+  # A list of values to include.
+  in: [String]
+
+  # A list of values to exclude.
+  notIn: [String]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # A regular expression to match on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.
+  matches: String
+
+  # A regular expression to reject on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.
+  notMatches: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+input FileBlobUrlWhereArgs {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: String
+
+  # Not equal to.
+  ne: String
+
+  # Greater than.
+  gt: String
+
+  # Greater than or equal to.
+  gte: String
+
+  # Less than.
+  lt: String
+
+  # Less than or equal to.
+  lte: String
+
+  # A two element tuple describing a range of values.
+  between: [String]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [String]
+
+  # A list of values to include.
+  in: [String]
+
+  # A list of values to exclude.
+  notIn: [String]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+# An edge wraps a node and a cursor. Edges are returned by
+#       Connection types as a standard way to paginate through connection values.
+type FileConnection {
+  # The set of edges in this page.
+  edges: [FileEdge]
+
+  # Metadata on the current page of data.
+  pageInfo: PageInfo!
+
+  # Aggregation operators for the File type.
+  aggregations: FileAggregations
+}
+
+input FileCreatedAtSubscriptionFilters {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: DateTime
+
+  # Greater than.
+  gt: DateTime
+
+  # Greater than or equal to.
+  gte: DateTime
+
+  # Less than.
+  lt: DateTime
+
+  # Less than or equal to.
+  lte: DateTime
+
+  # Not equal to.
+  ne: DateTime
+
+  # A two element tuple describing a range of values.
+  between: [DateTime]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [DateTime]
+
+  # A list of values to include.
+  in: [DateTime]
+
+  # A list of values to exclude.
+  notIn: [DateTime]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # A regular expression to match on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.
+  matches: String
+
+  # A regular expression to reject on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.
+  notMatches: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+input FileCreatedAtWhereArgs {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: DateTime
+
+  # Not equal to.
+  ne: DateTime
+
+  # Greater than.
+  gt: DateTime
+
+  # Greater than or equal to.
+  gte: DateTime
+
+  # Less than.
+  lt: DateTime
+
+  # Less than or equal to.
+  lte: DateTime
+
+  # A two element tuple describing a range of values.
+  between: [DateTime]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [DateTime]
+
+  # A list of values to include.
+  in: [DateTime]
+
+  # A list of values to exclude.
+  notIn: [DateTime]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+# An edge wraps a node and a cursor. Edges are returned by
+#       Connection types as a standard way to paginate through connection values.
+type FileEdge {
+  # The node value for the edge.
+  node: File!
+
+  # An opaque cursor pointing to an object in a connection.
+  #           Used by the 'after' and 'before' pagination arguments.
+  cursor: String!
+}
+
+input FileIdSubscriptionFilters {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: ID
+
+  # A list of values to include.
+  in: [ID]
+
+  # A list of values to exclude.
+  notIn: [ID]
+}
+
+input FileIdWhereArgs {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: ID
+
+  # Not equal to.
+  ne: ID
+
+  # A list of values to include.
+  in: [ID]
+
+  # A list of values to exclude.
+  notIn: [ID]
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+input FileModifiedAtSubscriptionFilters {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: DateTime
+
+  # Greater than.
+  gt: DateTime
+
+  # Greater than or equal to.
+  gte: DateTime
+
+  # Less than.
+  lt: DateTime
+
+  # Less than or equal to.
+  lte: DateTime
+
+  # Not equal to.
+  ne: DateTime
+
+  # A two element tuple describing a range of values.
+  between: [DateTime]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [DateTime]
+
+  # A list of values to include.
+  in: [DateTime]
+
+  # A list of values to exclude.
+  notIn: [DateTime]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # A regular expression to match on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.
+  matches: String
+
+  # A regular expression to reject on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.
+  notMatches: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+input FileModifiedAtWhereArgs {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: DateTime
+
+  # Not equal to.
+  ne: DateTime
+
+  # Greater than.
+  gt: DateTime
+
+  # Greater than or equal to.
+  gte: DateTime
+
+  # Less than.
+  lt: DateTime
+
+  # Less than or equal to.
+  lte: DateTime
+
+  # A two element tuple describing a range of values.
+  between: [DateTime]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [DateTime]
+
+  # A list of values to include.
+  in: [DateTime]
+
+  # A list of values to exclude.
+  notIn: [DateTime]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+enum FileMutationEvent {
+  # Subscribe to this event to be notified after every createFile mutation.
+  createFile
+
+  # Subscribe to this event to be notified after every updateFile mutation.
+  updateFile
+
+  # Subscribe to this event to be notified after every deleteFile mutation.
+  deleteFile
+}
+
+input FileNameSubscriptionFilters {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: String
+
+  # Greater than.
+  gt: String
+
+  # Greater than or equal to.
+  gte: String
+
+  # Less than.
+  lt: String
+
+  # Less than or equal to.
+  lte: String
+
+  # Not equal to.
+  ne: String
+
+  # A two element tuple describing a range of values.
+  between: [String]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [String]
+
+  # A list of values to include.
+  in: [String]
+
+  # A list of values to exclude.
+  notIn: [String]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # A regular expression to match on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.
+  matches: String
+
+  # A regular expression to reject on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.
+  notMatches: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+input FileNameWhereArgs {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: String
+
+  # Not equal to.
+  ne: String
+
+  # Greater than.
+  gt: String
+
+  # Greater than or equal to.
+  gte: String
+
+  # Less than.
+  lt: String
+
+  # Less than or equal to.
+  lte: String
+
+  # A two element tuple describing a range of values.
+  between: [String]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [String]
+
+  # A list of values to include.
+  in: [String]
+
+  # A list of values to exclude.
+  notIn: [String]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+input FileOrderByArgs {
+  field: FileOrderByField
+  direction: OrderByDirection
+}
+
+# Values for the FileOrderByField enum
+enum FileOrderByField {
+  blobMimeType
+  name
+  blobUrl
+  modifiedAt
+  id
+  createdAt
+}
+
+# Subscription filter arguments for the File type
+input FileSubscriptionFilter {
+  # Filter results for on the blobMimeType field.
+  blobMimeType: FileBlobMimeTypeSubscriptionFilters
+
+  # Filter results for on the name field.
+  name: FileNameSubscriptionFilters
+
+  # Filter results for on the blobUrl field.
+  blobUrl: FileBlobUrlSubscriptionFilters
+
+  # Filter results for on the modifiedAt field.
+  modifiedAt: FileModifiedAtSubscriptionFilters
+
+  # Filter results for on the id field.
+  id: FileIdSubscriptionFilters
+
+  # Filter results for on the createdAt field.
+  createdAt: FileCreatedAtSubscriptionFilters
+}
+
+# A payload wrapper for mutation operations.
+type FileSubscriptionPayload {
+  # The type of mutation operation that triggered this subscription.
+  mutation: FileMutationEvent
+
+  # The object that was just mutated.
+  value: File
+  edge: FileEdge
+}
+
+# Where filter arguments for the File type
+input FileWhereArgs {
+  # Filter results for on the blobMimeType field.
+  blobMimeType: FileBlobMimeTypeWhereArgs
+
+  # Filter results for on the name field.
+  name: FileNameWhereArgs
+
+  # Filter results for on the blobUrl field.
+  blobUrl: FileBlobUrlWhereArgs
+
+  # Filter results for on the modifiedAt field.
+  modifiedAt: FileModifiedAtWhereArgs
+
+  # Filter results for on the id field.
+  id: FileIdWhereArgs
+
+  # Filter results for on the createdAt field.
+  createdAt: FileCreatedAtWhereArgs
+
+  # Combine mutiple where expressions using the OR operator.
+  OR: [FileWhereArgs]
+
+  # Combine mutiple where expressions using the AND operator.
+  AND: [FileWhereArgs]
+}
+
+type HealthStatus {
+  # Returns `true` for healthy and `false` for unhealthy.
+  healthy: Boolean!
+
+  # Additional information about the health of the API.
+  message: String
+}
+
+input LoginUserInput {
+  username: String!
+  password: String!
+
+  # An opaque string used by frontend frameworks like relay to track requests and responses.
+  clientMutationId: String
+}
+
+type LoginUserPayload {
+  # The user's authentication token. Embed this under the
+  #           'Authorization' header with the format 'Bearer <token>'
+  #         
+  token: String
+
+  # The mutated User.
+  user: User
+
+  # An edge containing the mutated User. Use this to update your client side cache.
+  changedEdge: UserEdge
+
+  # A view port into your application.
+  viewer: Viewer
+
+  # An opaque string used by frontend frameworks like relay to track requests and responses.
+  clientMutationId: String
+}
+
+type MetricAggregationResult {
+  value: AnyObject
+  value_as_string: String
+}
+
+# A Scaphold User.
+input MigrateFieldInput {
+  # A global id
+  id: ID
+  name: String!
+  description: String
+  columnName: String
+  nonNull: Boolean
+  unique: Boolean
+  indexed: Boolean
+  type: String
+  ofType: String
+  ofTypeNonNull: Boolean
+  reverseName: String
+  defaultValue: AnyObject
+  isEditable: Boolean
+  through: String
+  position: Int
+}
+
+# A scaphold type permission.
+input MigratePermissionInput {
+  id: ID
+  scope: PermissionScopeEnum!
+  userFields: [MigrateFieldInput]
+  protectedFields: [MigrateFieldInput]
+  roles: [MigrateRoleInput]
+  create: Boolean
+  read: Boolean
+  update: Boolean
+  delete: Boolean
+  enabled: Boolean
+}
+
+# A scaphold type permission.
+input MigrateRoleInput {
+  id: ID!
+  name: String!
+}
+
+input MigrateSchemaInput {
+  id: ID!
+  name: String
+  description: String
+  types: [MigrateTypeInput]
+
+  # An opaque string used by frontend frameworks like relay to track requests and responses.
+  clientMutationId: String
+}
+
+type MigrateSchemaPayload {
+  # The mutated Schema.
+  changedSchema: Schema
+
+  # A view port into your application.
+  viewer: Viewer
+
+  # An opaque string used by frontend frameworks like relay to track requests and responses.
+  clientMutationId: String
+}
+
+# A Scaphold User.
+input MigrateTypeInput {
+  # A global id
+  id: ID
+  name: String!
+  description: String
+  kind: TypeKind!
+  interfaces: [String]
+  fields: [MigrateFieldInput]
+  permissions: [MigratePermissionInput]
+  values: [String]
+  isBridge: Boolean
+  position: Int
+  isEditable: Boolean
+  isDeletable: Boolean
+  isExtendable: Boolean
+}
+
+type Mutation {
+  migrateSchema(input: MigrateSchemaInput!): MigrateSchemaPayload
+  loginUser(input: LoginUserInput!): LoginUserPayload
+  changeUserPassword(input: ChangeUserPasswordInput!): ChangeUserPasswordPayload
+
+  # Create objects of type Role.
+  createRole(input: CreateRoleInput!): CreateRolePayload
+
+  # Update objects of type Role.
+  updateRole(input: UpdateRoleInput!): UpdateRolePayload
+
+  # Delete objects of type Role.
+  deleteRole(input: DeleteRoleInput!): DeleteRolePayload
+
+  # Create objects of type SubReddit.
+  createSubReddit(input: CreateSubRedditInput!): CreateSubRedditPayload
+
+  # Update objects of type SubReddit.
+  updateSubReddit(input: UpdateSubRedditInput!): UpdateSubRedditPayload
+
+  # Delete objects of type SubReddit.
+  deleteSubReddit(input: DeleteSubRedditInput!): DeleteSubRedditPayload
+
+  # Create objects of type Post.
+  createPost(input: CreatePostInput!): CreatePostPayload
+
+  # Update objects of type Post.
+  updatePost(input: UpdatePostInput!): UpdatePostPayload
+
+  # Delete objects of type Post.
+  deletePost(input: DeletePostInput!): DeletePostPayload
+
+  # Create objects of type File.
+  createFile(input: CreateFileInput!): CreateFilePayload
+
+  # Update objects of type File.
+  updateFile(input: UpdateFileInput!): UpdateFilePayload
+
+  # Delete objects of type File.
+  deleteFile(input: DeleteFileInput!): DeleteFilePayload
+
+  # Create objects of type User.
+  createUser(input: CreateUserInput!): CreateUserPayload
+
+  # Update objects of type User.
+  updateUser(input: UpdateUserInput!): UpdateUserPayload
+
+  # Delete objects of type User.
+  deleteUser(input: DeleteUserInput!): DeleteUserPayload
+
+  # Adds a connection between an object of type
+  #       'Role' and an object of type User. You can edit
+  #       the 'UserRoles' bridge type to add/remove custom fields for this connection.
+  #     
+  addToUserRolesConnection(input: AddToUserRolesConnectionInput!): AddToUserRolesConnectionPayload
+
+  # Updates an existing connection between an object of type
+  #       'Role' and an object of type User.
+  #     
+  updateUserRolesConnection(input: UpdateUserRolesConnectionInput!): UpdateUserRolesConnectionPayload
+
+  # Removes a connection between an object of type
+  #       'Role' and an object of type User.
+  #     
+  removeFromUserRolesConnection(input: RemoveFromUserRolesConnectionInput!): RemoveFromUserRolesConnectionPayload
+}
+
+type NestedResolverLogAggregation {
+  doc_count: Int
+  aggregations: ResolverLogAggregationSet
+}
+
+interface Node {
+  id: ID!
+}
+
+# Values for the OrderByDirection enum
+enum OrderByDirection {
+  ASC
+  DESC
+}
+
+# PageInfo must contain fields hasPreviousPage and hasNextPage,
+#                 both of which return non‐null booleans.
+type PageInfo {
+  # hasNextPage will be false if the client is not paginating with first,
+  #                     or if the client is paginating with first, and the server has determined
+  #                     that the client has reached the end of the set of edges defined by their
+  #                     cursors.
+  hasNextPage: Boolean!
+
+  # hasPreviousPage will be false if the client is not paginating with last,
+  #                         or if the client is paginating with last, and the server has determined
+  #                         that the client has reached the end of the set of edges defined by their
+  #                         cursors.
+  hasPreviousPage: Boolean!
+}
+
+# A scaphold type permission.
+type Permission implements Node {
+  id: ID!
+  scope: PermissionScopeEnum!
+  userFields: [Field]
+  protectedFields: [Field]
+  roles: [Role]
+  enabled: Boolean
+  create: Boolean
+  read: Boolean
+  update: Boolean
+  delete: Boolean
+  createdAt: DateTime
+  modifiedAt: DateTime
+}
+
+# Values for the PermissionScopeEnum enum
+enum PermissionScopeEnum {
+  EVERYONE
+  AUTHENTICATED
+  RELATION
+  ROLE
+}
+
+# The Post type
+type Post implements Node, Timestamped {
+  # The reverse field of 'posts' in M:1 connection
+  #             with type 'Post'.
+  subReddit: SubReddit
+
+  # When paired with the Node interface, this is an automatically managed
+  #           timestamp that is set whenever an object is mutated.
+  modifiedAt: DateTime!
+
+  # A globally unique ID.
+  id: ID!
+  title: String!
+  url: String
+
+  # When paired with the Node interface, this is an automatically managed
+  #           timestamp that is set when an object is first created.
+  createdAt: DateTime!
+}
+
+type PostAggregations {
+  # Returns the number of objects in the connection.
+  count: Int
+
+  # The minimum value for the field
+  min: PostAggregationsMin
+
+  # The maximum value for the field
+  max: PostAggregationsMax
+}
+
+type PostAggregationsMax {
+  modifiedAt: DateTime
+  createdAt: DateTime
+  title: String
+  url: String
+}
+
+type PostAggregationsMin {
+  modifiedAt: DateTime
+  createdAt: DateTime
+  title: String
+  url: String
+}
+
+# An edge wraps a node and a cursor. Edges are returned by
+#       Connection types as a standard way to paginate through connection values.
+type PostConnection {
+  # The set of edges in this page.
+  edges: [PostEdge]
+
+  # Metadata on the current page of data.
+  pageInfo: PageInfo!
+
+  # Aggregation operators for the Post type.
+  aggregations: PostAggregations
+}
+
+input PostCreatedAtSubscriptionFilters {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: DateTime
+
+  # Greater than.
+  gt: DateTime
+
+  # Greater than or equal to.
+  gte: DateTime
+
+  # Less than.
+  lt: DateTime
+
+  # Less than or equal to.
+  lte: DateTime
+
+  # Not equal to.
+  ne: DateTime
+
+  # A two element tuple describing a range of values.
+  between: [DateTime]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [DateTime]
+
+  # A list of values to include.
+  in: [DateTime]
+
+  # A list of values to exclude.
+  notIn: [DateTime]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # A regular expression to match on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.
+  matches: String
+
+  # A regular expression to reject on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.
+  notMatches: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+input PostCreatedAtWhereArgs {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: DateTime
+
+  # Not equal to.
+  ne: DateTime
+
+  # Greater than.
+  gt: DateTime
+
+  # Greater than or equal to.
+  gte: DateTime
+
+  # Less than.
+  lt: DateTime
+
+  # Less than or equal to.
+  lte: DateTime
+
+  # A two element tuple describing a range of values.
+  between: [DateTime]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [DateTime]
+
+  # A list of values to include.
+  in: [DateTime]
+
+  # A list of values to exclude.
+  notIn: [DateTime]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+# An edge wraps a node and a cursor. Edges are returned by
+#       Connection types as a standard way to paginate through connection values.
+type PostEdge {
+  # The node value for the edge.
+  node: Post!
+
+  # An opaque cursor pointing to an object in a connection.
+  #           Used by the 'after' and 'before' pagination arguments.
+  cursor: String!
+}
+
+input PostIdSubscriptionFilters {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: ID
+
+  # A list of values to include.
+  in: [ID]
+
+  # A list of values to exclude.
+  notIn: [ID]
+}
+
+input PostIdWhereArgs {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: ID
+
+  # Not equal to.
+  ne: ID
+
+  # A list of values to include.
+  in: [ID]
+
+  # A list of values to exclude.
+  notIn: [ID]
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+input PostModifiedAtSubscriptionFilters {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: DateTime
+
+  # Greater than.
+  gt: DateTime
+
+  # Greater than or equal to.
+  gte: DateTime
+
+  # Less than.
+  lt: DateTime
+
+  # Less than or equal to.
+  lte: DateTime
+
+  # Not equal to.
+  ne: DateTime
+
+  # A two element tuple describing a range of values.
+  between: [DateTime]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [DateTime]
+
+  # A list of values to include.
+  in: [DateTime]
+
+  # A list of values to exclude.
+  notIn: [DateTime]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # A regular expression to match on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.
+  matches: String
+
+  # A regular expression to reject on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.
+  notMatches: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+input PostModifiedAtWhereArgs {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: DateTime
+
+  # Not equal to.
+  ne: DateTime
+
+  # Greater than.
+  gt: DateTime
+
+  # Greater than or equal to.
+  gte: DateTime
+
+  # Less than.
+  lt: DateTime
+
+  # Less than or equal to.
+  lte: DateTime
+
+  # A two element tuple describing a range of values.
+  between: [DateTime]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [DateTime]
+
+  # A list of values to include.
+  in: [DateTime]
+
+  # A list of values to exclude.
+  notIn: [DateTime]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+enum PostMutationEvent {
+  # Subscribe to this event to be notified after every createPost mutation.
+  createPost
+
+  # Subscribe to this event to be notified after every updatePost mutation.
+  updatePost
+
+  # Subscribe to this event to be notified after every deletePost mutation.
+  deletePost
+}
+
+input PostOrderByArgs {
+  field: PostOrderByField
+  direction: OrderByDirection
+}
+
+# Values for the PostOrderByField enum
+enum PostOrderByField {
+  modifiedAt
+  id
+  title
+  url
+  createdAt
+}
+
+input PostSubRedditIdSubscriptionFilters {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: ID
+
+  # A list of values to include.
+  in: [ID]
+
+  # A list of values to exclude.
+  notIn: [ID]
+}
+
+input PostSubRedditIdWhereArgs {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: ID
+
+  # Not equal to.
+  ne: ID
+
+  # A list of values to include.
+  in: [ID]
+
+  # A list of values to exclude.
+  notIn: [ID]
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+# Subscription filter arguments for the Post type
+input PostSubscriptionFilter {
+  # Filter results for on the modifiedAt field.
+  modifiedAt: PostModifiedAtSubscriptionFilters
+
+  # Filter results for on the id field.
+  id: PostIdSubscriptionFilters
+
+  # Filter results for on the title field.
+  title: PostTitleSubscriptionFilters
+
+  # Filter results for on the url field.
+  url: PostUrlSubscriptionFilters
+
+  # Filter results for on the createdAt field.
+  createdAt: PostCreatedAtSubscriptionFilters
+
+  # Filter results for on the subRedditId field.
+  subRedditId: PostSubRedditIdSubscriptionFilters
+}
+
+# A payload wrapper for mutation operations.
+type PostSubscriptionPayload {
+  # The type of mutation operation that triggered this subscription.
+  mutation: PostMutationEvent
+
+  # The object that was just mutated.
+  value: Post
+  edge: PostEdge
+}
+
+input PostTitleSubscriptionFilters {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: String
+
+  # Greater than.
+  gt: String
+
+  # Greater than or equal to.
+  gte: String
+
+  # Less than.
+  lt: String
+
+  # Less than or equal to.
+  lte: String
+
+  # Not equal to.
+  ne: String
+
+  # A two element tuple describing a range of values.
+  between: [String]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [String]
+
+  # A list of values to include.
+  in: [String]
+
+  # A list of values to exclude.
+  notIn: [String]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # A regular expression to match on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.
+  matches: String
+
+  # A regular expression to reject on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.
+  notMatches: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+input PostTitleWhereArgs {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: String
+
+  # Not equal to.
+  ne: String
+
+  # Greater than.
+  gt: String
+
+  # Greater than or equal to.
+  gte: String
+
+  # Less than.
+  lt: String
+
+  # Less than or equal to.
+  lte: String
+
+  # A two element tuple describing a range of values.
+  between: [String]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [String]
+
+  # A list of values to include.
+  in: [String]
+
+  # A list of values to exclude.
+  notIn: [String]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+input PostUrlSubscriptionFilters {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: String
+
+  # Greater than.
+  gt: String
+
+  # Greater than or equal to.
+  gte: String
+
+  # Less than.
+  lt: String
+
+  # Less than or equal to.
+  lte: String
+
+  # Not equal to.
+  ne: String
+
+  # A two element tuple describing a range of values.
+  between: [String]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [String]
+
+  # A list of values to include.
+  in: [String]
+
+  # A list of values to exclude.
+  notIn: [String]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # A regular expression to match on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.
+  matches: String
+
+  # A regular expression to reject on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.
+  notMatches: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+input PostUrlWhereArgs {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: String
+
+  # Not equal to.
+  ne: String
+
+  # Greater than.
+  gt: String
+
+  # Greater than or equal to.
+  gte: String
+
+  # Less than.
+  lt: String
+
+  # Less than or equal to.
+  lte: String
+
+  # A two element tuple describing a range of values.
+  between: [String]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [String]
+
+  # A list of values to include.
+  in: [String]
+
+  # A list of values to exclude.
+  notIn: [String]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+# Where filter arguments for the Post type
+input PostWhereArgs {
+  # Filter results based on a related object via the subReddit connection
+  subReddit: SubRedditWhereArgs
+
+  # Filter results for on the modifiedAt field.
+  modifiedAt: PostModifiedAtWhereArgs
+
+  # Filter results for on the id field.
+  id: PostIdWhereArgs
+
+  # Filter results for on the title field.
+  title: PostTitleWhereArgs
+
+  # Filter results for on the url field.
+  url: PostUrlWhereArgs
+
+  # Filter results for on the createdAt field.
+  createdAt: PostCreatedAtWhereArgs
+
+  # Filter results for on the subRedditId field.
+  subRedditId: PostSubRedditIdWhereArgs
+
+  # Combine mutiple where expressions using the OR operator.
+  OR: [PostWhereArgs]
+
+  # Combine mutiple where expressions using the AND operator.
+  AND: [PostWhereArgs]
+}
+
+type Query {
+  node(id: ID!): Node
+
+  # Get objects of type Role by id.
+  getRole(id: ID!): Role
+
+  # Get objects of type SubReddit by id.
+  getSubReddit(id: ID!): SubReddit
+
+  # Get objects of type Post by id.
+  getPost(id: ID!): Post
+
+  # Get objects of type File by id.
+  getFile(id: ID!): File
+
+  # Get objects of type User by id.
+  getUser(id: ID!): User
+  viewer: Viewer
+
+  # Check the health of your GraphQL API by pinging the server.
+  #           It will return `true` for healthy and `false` for unhealthy.
+  checkHealth: HealthStatus
+  searchRequestLogs: RequestLogSearchResults
+}
+
+input RemoveFromUserRolesConnectionInput {
+  roleId: ID!
+  userId: ID!
+
+  # An opaque string used by frontend frameworks like relay to track requests and responses.
+  clientMutationId: String
+}
+
+type RemoveFromUserRolesConnectionPayload {
+  # The mutated UserRoles.
+  changedUserRoles: UserRoles
+
+  # An edge containing the mutated UserRoles. Use this to update your client side cache.
+  changedEdge: UserRolesEdge
+
+  # A view port into your application.
+  viewer: Viewer
+
+  # An opaque string used by frontend frameworks like relay to track requests and responses.
+  clientMutationId: String
+}
+
+# ### RequestLog
+#
+#         Request Logs are backed by elasticsearch and therefore offer more powerful querying and
+#         analytical capabilities. We have adapted the ElasticSearch API to better fit GraphQL, but
+#         the concepts remain the same. The definitive guide is a great place to start if you are
+#         new to search (https://www.elastic.co/guide/en/elasticsearch/guide/current/index.html),
+#         and these docs cover the API in more detail:
+#         (https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html)
+type RequestLog implements Node {
+  id: ID!
+  username: String
+  isAdmin: Boolean
+  isBillable: Boolean
+  start: DateTime
+  duration: Int
+  responseSizeBytes: Int
+  requestMethod: String
+  status: String
+  errors: [String]
+  resolvers: [ResolverLog]
+  createdAt: DateTime!
+}
+
+type RequestLogAggregationBucket {
+  doc_count: Int
+  key: AnyObject
+  key_as_string: String
+  aggregations: RequestLogAggregationSet
+}
+
+type RequestLogAggregationSet {
+  avg(field: RequestLogNumericField): MetricAggregationResult
+  cardinality(field: RequestLogField, precision_threshhold: Int): MetricAggregationResult
+  max(field: RequestLogNumericField): MetricAggregationResult
+  min(field: RequestLogNumericField): MetricAggregationResult
+  percentiles(field: RequestLogNumericField): MetricAggregationResult
+  stats(field: RequestLogNumericField): StatsAggregationResult
+  sum(field: RequestLogNumericField): MetricAggregationResult
+  value_count(field: RequestLogNumericField): MetricAggregationResult
+  date_range(field: RequestLogDateTimeField, format: String, ranges: [DateRangeInput]!): RequestLogBucketAggregation
+  date_histogram(field: RequestLogDateTimeField, interval: String, format: String, time_zone: String, missing: String): RequestLogBucketAggregation
+  terms(field: RequestLogStringField, size: Int, missing: String): RequestLogBucketAggregation
+  filter(term: RequestLogTermFilter): RequestLogFilterAggregation
+  resolvers: NestedResolverLogAggregation
+}
+
+type RequestLogBucketAggregation {
+  buckets: [RequestLogAggregationBucket]
+}
+
+# Values for the RequestLogDateTimeField enum
+enum RequestLogDateTimeField {
+  createdAt
+}
+
+# An edge wraps a node and a cursor. Edges are returned by
+#       Connection types as a standard way to paginate through connection values.
+type RequestLogEdge {
+  # The node value for the edge.
+  node: RequestLog!
+
+  # An opaque cursor pointing to an object in a connection.
+  #           Used by the 'after' and 'before' pagination arguments.
+  cursor: String!
+}
+
+# Values for the RequestLogField enum
+enum RequestLogField {
+  appId
+  userId
+  isAdmin
+  username
+  isBillable
+  status
+  logType
+  start
+  createdAt
+  duration
+  durationHr
+  responseSizeBytes
+  requestMethod
+  originalUrl
+  errors
+  resolvers
+}
+
+type RequestLogFilterAggregation {
+  doc_count: Int
+  aggregations: RequestLogAggregationSet
+}
+
+# Values for the RequestLogNumericField enum
+enum RequestLogNumericField {
+  duration
+  responseSizeBytes
+}
+
+type RequestLogSearchResults {
+  # Returns a set of documents satisfying the query string and pagination
+  # arguments. The 'q' querystring accepts any elasticsearch query string. See
+  # (https://www.elastic.co/guide/en/elasticsearch/reference/current/
+  # query-dsl-query-string-query.html#query-string-syntax) for mre details.
+  edges(q: String, first: Int = 50, after: String): [RequestLogEdge]
+
+  # Run complex aggregations on your data.
+  aggregations: RequestLogAggregationSet
+  took: Int
+}
+
+# Values for the RequestLogStringField enum
+enum RequestLogStringField {
+  appId
+  userId
+  username
+  status
+  logType
+  requestMethod
+  originalUrl
+  errors
+}
+
+input RequestLogTermFilter {
+  appId: String
+  userId: String
+  username: String
+  status: String
+  logType: String
+  requestMethod: String
+  originalUrl: String
+  errors: String
+  isAdmin: Boolean
+  isBillable: Boolean
+  duration: Int
+  responseSizeBytes: Int
+}
+
+type ResolverLog {
+  parentType: String
+  returnType: String
+  parsedReturnType: String
+  fieldName: String
+  operation: String
+  start: DateTime
+  minDuration: Int
+  maxDuration: Int
+  avgDuration: Int
+  totalDuration: Int
+  count: Int
+  path: [String]
+  statuses: String
+  errors: String
+}
+
+type ResolverLogAggregationBucket {
+  doc_count: Int
+  key: AnyObject
+  key_as_string: String
+  aggregations: ResolverLogAggregationSet
+}
+
+type ResolverLogAggregationSet {
+  avg(field: ResolverLogNumericField): MetricAggregationResult
+  cardinality(field: ResolverLogField, precision_threshhold: Int): MetricAggregationResult
+  max(field: ResolverLogNumericField): MetricAggregationResult
+  min(field: ResolverLogNumericField): MetricAggregationResult
+  percentiles(field: ResolverLogNumericField): MetricAggregationResult
+  stats(field: ResolverLogNumericField): StatsAggregationResult
+  sum(field: ResolverLogNumericField): MetricAggregationResult
+  value_count(field: ResolverLogNumericField): MetricAggregationResult
+  date_range(field: ResolverLogDateTimeField, format: String, ranges: [DateRangeInput]!): ResolverLogBucketAggregation
+  date_histogram(field: ResolverLogDateTimeField, interval: String, format: String, time_zone: String, missing: String): ResolverLogBucketAggregation
+  terms(field: ResolverLogStringField, size: Int, missing: String): ResolverLogBucketAggregation
+  filter(term: ResolverLogTermFilter): ResolverLogFilterAggregation
+}
+
+type ResolverLogBucketAggregation {
+  buckets: [ResolverLogAggregationBucket]
+}
+
+# Values for the ResolverLogDateTimeField enum
+enum ResolverLogDateTimeField {
+  start
+}
+
+# Values for the ResolverLogField enum
+enum ResolverLogField {
+  fieldName
+  operation
+  start
+  path
+  status
+  error
+  totalDuration
+  count
+  minDuration
+  maxDuration
+  avgDuration
+  parentType
+  returnType
+  parsedReturnType
+}
+
+type ResolverLogFilterAggregation {
+  doc_count: Int
+  aggregations: ResolverLogAggregationSet
+}
+
+# Values for the ResolverLogNumericField enum
+enum ResolverLogNumericField {
+  totalDuration
+  count
+  minDuration
+  maxDuration
+  avgDuration
+}
+
+# Values for the ResolverLogStringField enum
+enum ResolverLogStringField {
+  fieldName
+  operation
+  path
+  status
+  error
+  parentType
+  returnType
+  parsedReturnType
+}
+
+input ResolverLogTermFilter {
+  fieldName: String
+  operation: String
+  path: String
+  status: String
+  error: String
+  parentType: String
+  returnType: String
+  parsedReturnType: String
+  totalDuration: Int
+  count: Int
+  minDuration: Int
+  maxDuration: Int
+  avgDuration: Float
+}
+
+# The Role type
+type Role implements Node, Timestamped {
+  # When paired with the Node interface, this is an automatically managed
+  #           timestamp that is set when an object is first created.
+  createdAt: DateTime!
+
+  # The name of the role.
+  name: String!
+
+  # A globally unique ID.
+  id: ID!
+
+  # When paired with the Node interface, this is an automatically managed
+  #           timestamp that is set whenever an object is mutated.
+  modifiedAt: DateTime!
+
+  # The user`s belonging to this role
+  members(where: UserWhereArgs, orderBy: [UserOrderByArgs], first: Int, after: String, last: Int, before: String): RoleMembersConnection
+}
+
+type RoleAggregations {
+  # Returns the number of objects in the connection.
+  count: Int
+
+  # The minimum value for the field
+  min: RoleAggregationsMin
+
+  # The maximum value for the field
+  max: RoleAggregationsMax
+}
+
+type RoleAggregationsMax {
+  createdAt: DateTime
+  modifiedAt: DateTime
+  name: String
+}
+
+type RoleAggregationsMin {
+  createdAt: DateTime
+  modifiedAt: DateTime
+  name: String
+}
+
+# An edge wraps a node and a cursor. Edges are returned by
+#       Connection types as a standard way to paginate through connection values.
+type RoleConnection {
+  # The set of edges in this page.
+  edges: [RoleEdge]
+
+  # Metadata on the current page of data.
+  pageInfo: PageInfo!
+
+  # Aggregation operators for the Role type.
+  aggregations: RoleAggregations
+}
+
+input RoleCreatedAtSubscriptionFilters {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: DateTime
+
+  # Greater than.
+  gt: DateTime
+
+  # Greater than or equal to.
+  gte: DateTime
+
+  # Less than.
+  lt: DateTime
+
+  # Less than or equal to.
+  lte: DateTime
+
+  # Not equal to.
+  ne: DateTime
+
+  # A two element tuple describing a range of values.
+  between: [DateTime]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [DateTime]
+
+  # A list of values to include.
+  in: [DateTime]
+
+  # A list of values to exclude.
+  notIn: [DateTime]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # A regular expression to match on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.
+  matches: String
+
+  # A regular expression to reject on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.
+  notMatches: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+input RoleCreatedAtWhereArgs {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: DateTime
+
+  # Not equal to.
+  ne: DateTime
+
+  # Greater than.
+  gt: DateTime
+
+  # Greater than or equal to.
+  gte: DateTime
+
+  # Less than.
+  lt: DateTime
+
+  # Less than or equal to.
+  lte: DateTime
+
+  # A two element tuple describing a range of values.
+  between: [DateTime]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [DateTime]
+
+  # A list of values to include.
+  in: [DateTime]
+
+  # A list of values to exclude.
+  notIn: [DateTime]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+# An edge wraps a node and a cursor. Edges are returned by
+#       Connection types as a standard way to paginate through connection values.
+type RoleEdge {
+  # The node value for the edge.
+  node: Role!
+
+  # An opaque cursor pointing to an object in a connection.
+  #           Used by the 'after' and 'before' pagination arguments.
+  cursor: String!
+}
+
+input RoleIdSubscriptionFilters {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: ID
+
+  # A list of values to include.
+  in: [ID]
+
+  # A list of values to exclude.
+  notIn: [ID]
+}
+
+input RoleIdWhereArgs {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: ID
+
+  # Not equal to.
+  ne: ID
+
+  # A list of values to include.
+  in: [ID]
+
+  # A list of values to exclude.
+  notIn: [ID]
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+# An edge wraps a node and a cursor. Edges are returned by
+#       Connection types as a standard way to paginate through connection values.
+type RoleMembersConnection {
+  # The set of edges in this page.
+  edges: [RoleMembersEdge]
+
+  # Metadata on the current page of data.
+  pageInfo: PageInfo!
+
+  # Aggregation operators for the User type.
+  aggregations: UserAggregations
+}
+
+# An edge wraps a node and a cursor. Edges are returned by
+#       Connection types as a standard way to paginate through connection values.
+type RoleMembersEdge {
+  # The node value for the edge.
+  node: User!
+
+  # An opaque cursor pointing to an object in a connection.
+  #           Used by the 'after' and 'before' pagination arguments.
+  cursor: String!
+
+  # The access level for this user enrollment.
+  accessLevel: AccessLevel!
+
+  # When paired with the Node interface, this is an automatically managed
+  #           timestamp that is set when an object is first created.
+  createdAt: DateTime!
+
+  # When paired with the Node interface, this is an automatically managed
+  #           timestamp that is set whenever an object is mutated.
+  modifiedAt: DateTime!
+}
+
+# Select objects by filtering on objects in a connection
+input RoleMembersWhereArgs {
+  # Filter on values on the connection edge. E.G. Get all users with readonly membership to a role.
+  edge: UserRolesEdgeWhereArgs
+
+  # Filter on values in the target type. E.G. Get all users that are a member of the Executives role
+  node: UserWhereArgs
+}
+
+input RoleModifiedAtSubscriptionFilters {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: DateTime
+
+  # Greater than.
+  gt: DateTime
+
+  # Greater than or equal to.
+  gte: DateTime
+
+  # Less than.
+  lt: DateTime
+
+  # Less than or equal to.
+  lte: DateTime
+
+  # Not equal to.
+  ne: DateTime
+
+  # A two element tuple describing a range of values.
+  between: [DateTime]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [DateTime]
+
+  # A list of values to include.
+  in: [DateTime]
+
+  # A list of values to exclude.
+  notIn: [DateTime]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # A regular expression to match on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.
+  matches: String
+
+  # A regular expression to reject on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.
+  notMatches: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+input RoleModifiedAtWhereArgs {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: DateTime
+
+  # Not equal to.
+  ne: DateTime
+
+  # Greater than.
+  gt: DateTime
+
+  # Greater than or equal to.
+  gte: DateTime
+
+  # Less than.
+  lt: DateTime
+
+  # Less than or equal to.
+  lte: DateTime
+
+  # A two element tuple describing a range of values.
+  between: [DateTime]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [DateTime]
+
+  # A list of values to include.
+  in: [DateTime]
+
+  # A list of values to exclude.
+  notIn: [DateTime]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+enum RoleMutationEvent {
+  # Subscribe to this event to be notified after every createRole mutation.
+  createRole
+
+  # Subscribe to this event to be notified after every updateRole mutation.
+  updateRole
+
+  # Subscribe to this event to be notified after every deleteRole mutation.
+  deleteRole
+}
+
+input RoleNameSubscriptionFilters {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: String
+
+  # Greater than.
+  gt: String
+
+  # Greater than or equal to.
+  gte: String
+
+  # Less than.
+  lt: String
+
+  # Less than or equal to.
+  lte: String
+
+  # Not equal to.
+  ne: String
+
+  # A two element tuple describing a range of values.
+  between: [String]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [String]
+
+  # A list of values to include.
+  in: [String]
+
+  # A list of values to exclude.
+  notIn: [String]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # A regular expression to match on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.
+  matches: String
+
+  # A regular expression to reject on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.
+  notMatches: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+input RoleNameWhereArgs {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: String
+
+  # Not equal to.
+  ne: String
+
+  # Greater than.
+  gt: String
+
+  # Greater than or equal to.
+  gte: String
+
+  # Less than.
+  lt: String
+
+  # Less than or equal to.
+  lte: String
+
+  # A two element tuple describing a range of values.
+  between: [String]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [String]
+
+  # A list of values to include.
+  in: [String]
+
+  # A list of values to exclude.
+  notIn: [String]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+input RoleOrderByArgs {
+  field: RoleOrderByField
+  direction: OrderByDirection
+}
+
+# Values for the RoleOrderByField enum
+enum RoleOrderByField {
+  createdAt
+  name
+  id
+  modifiedAt
+}
+
+# Subscription filter arguments for the Role type
+input RoleSubscriptionFilter {
+  # Filter results for on the createdAt field.
+  createdAt: RoleCreatedAtSubscriptionFilters
+
+  # Filter results for on the name field.
+  name: RoleNameSubscriptionFilters
+
+  # Filter results for on the id field.
+  id: RoleIdSubscriptionFilters
+
+  # Filter results for on the modifiedAt field.
+  modifiedAt: RoleModifiedAtSubscriptionFilters
+}
+
+# A payload wrapper for mutation operations.
+type RoleSubscriptionPayload {
+  # The type of mutation operation that triggered this subscription.
+  mutation: RoleMutationEvent
+
+  # The object that was just mutated.
+  value: Role
+  edge: RoleEdge
+}
+
+# Where filter arguments for the Role type
+input RoleWhereArgs {
+  # Filter results for on the createdAt field.
+  createdAt: RoleCreatedAtWhereArgs
+
+  # Filter results for on the name field.
+  name: RoleNameWhereArgs
+
+  # Filter results for on the id field.
+  id: RoleIdWhereArgs
+
+  # Filter results for on the modifiedAt field.
+  modifiedAt: RoleModifiedAtWhereArgs
+
+  # Filter results based on a related object via the members connection
+  members: RoleMembersWhereArgs
+
+  # Combine mutiple where expressions using the OR operator.
+  OR: [RoleWhereArgs]
+
+  # Combine mutiple where expressions using the AND operator.
+  AND: [RoleWhereArgs]
+}
+
+# A Scaphold Schema.
+type Schema implements Node {
+  # A global id
+  id: ID!
+  name: String!
+  description: String
+  types: [Type]
+  createdAt: DateTime
+  modifiedAt: DateTime
+}
+
+#
+#       The 'Secret' scalar type represents textual data, represented as UTF-8 that should not
+#       be readable. The Secret type is often used to hide sensitive information such as passwords
+#       and credentials.
+#     
+scalar Secret
+
+type StatsAggregationResult {
+  count: Int
+  min: Float
+  max: Float
+  avg: Float
+  sum: Float
+}
+
+# The SubReddit type
+type SubReddit implements Node, Timestamped {
+  # When paired with the Node interface, this is an automatically managed
+  #           timestamp that is set when an object is first created.
+  createdAt: DateTime!
+
+  # A globally unique ID.
+  id: ID!
+  name: String!
+  posts(where: PostWhereArgs, orderBy: [PostOrderByArgs], first: Int, after: String, last: Int, before: String): PostConnection
+
+  # When paired with the Node interface, this is an automatically managed
+  #           timestamp that is set whenever an object is mutated.
+  modifiedAt: DateTime!
+}
+
+type SubRedditAggregations {
+  # Returns the number of objects in the connection.
+  count: Int
+
+  # The minimum value for the field
+  min: SubRedditAggregationsMin
+
+  # The maximum value for the field
+  max: SubRedditAggregationsMax
+}
+
+type SubRedditAggregationsMax {
+  createdAt: DateTime
+  modifiedAt: DateTime
+  name: String
+}
+
+type SubRedditAggregationsMin {
+  createdAt: DateTime
+  modifiedAt: DateTime
+  name: String
+}
+
+# An edge wraps a node and a cursor. Edges are returned by
+#       Connection types as a standard way to paginate through connection values.
+type SubRedditConnection {
+  # The set of edges in this page.
+  edges: [SubRedditEdge]
+
+  # Metadata on the current page of data.
+  pageInfo: PageInfo!
+
+  # Aggregation operators for the SubReddit type.
+  aggregations: SubRedditAggregations
+}
+
+input SubRedditCreatedAtSubscriptionFilters {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: DateTime
+
+  # Greater than.
+  gt: DateTime
+
+  # Greater than or equal to.
+  gte: DateTime
+
+  # Less than.
+  lt: DateTime
+
+  # Less than or equal to.
+  lte: DateTime
+
+  # Not equal to.
+  ne: DateTime
+
+  # A two element tuple describing a range of values.
+  between: [DateTime]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [DateTime]
+
+  # A list of values to include.
+  in: [DateTime]
+
+  # A list of values to exclude.
+  notIn: [DateTime]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # A regular expression to match on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.
+  matches: String
+
+  # A regular expression to reject on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.
+  notMatches: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+input SubRedditCreatedAtWhereArgs {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: DateTime
+
+  # Not equal to.
+  ne: DateTime
+
+  # Greater than.
+  gt: DateTime
+
+  # Greater than or equal to.
+  gte: DateTime
+
+  # Less than.
+  lt: DateTime
+
+  # Less than or equal to.
+  lte: DateTime
+
+  # A two element tuple describing a range of values.
+  between: [DateTime]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [DateTime]
+
+  # A list of values to include.
+  in: [DateTime]
+
+  # A list of values to exclude.
+  notIn: [DateTime]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+# An edge wraps a node and a cursor. Edges are returned by
+#       Connection types as a standard way to paginate through connection values.
+type SubRedditEdge {
+  # The node value for the edge.
+  node: SubReddit!
+
+  # An opaque cursor pointing to an object in a connection.
+  #           Used by the 'after' and 'before' pagination arguments.
+  cursor: String!
+}
+
+input SubRedditIdSubscriptionFilters {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: ID
+
+  # A list of values to include.
+  in: [ID]
+
+  # A list of values to exclude.
+  notIn: [ID]
+}
+
+input SubRedditIdWhereArgs {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: ID
+
+  # Not equal to.
+  ne: ID
+
+  # A list of values to include.
+  in: [ID]
+
+  # A list of values to exclude.
+  notIn: [ID]
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+input SubRedditModifiedAtSubscriptionFilters {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: DateTime
+
+  # Greater than.
+  gt: DateTime
+
+  # Greater than or equal to.
+  gte: DateTime
+
+  # Less than.
+  lt: DateTime
+
+  # Less than or equal to.
+  lte: DateTime
+
+  # Not equal to.
+  ne: DateTime
+
+  # A two element tuple describing a range of values.
+  between: [DateTime]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [DateTime]
+
+  # A list of values to include.
+  in: [DateTime]
+
+  # A list of values to exclude.
+  notIn: [DateTime]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # A regular expression to match on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.
+  matches: String
+
+  # A regular expression to reject on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.
+  notMatches: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+input SubRedditModifiedAtWhereArgs {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: DateTime
+
+  # Not equal to.
+  ne: DateTime
+
+  # Greater than.
+  gt: DateTime
+
+  # Greater than or equal to.
+  gte: DateTime
+
+  # Less than.
+  lt: DateTime
+
+  # Less than or equal to.
+  lte: DateTime
+
+  # A two element tuple describing a range of values.
+  between: [DateTime]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [DateTime]
+
+  # A list of values to include.
+  in: [DateTime]
+
+  # A list of values to exclude.
+  notIn: [DateTime]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+enum SubRedditMutationEvent {
+  # Subscribe to this event to be notified after every createSubReddit mutation.
+  createSubReddit
+
+  # Subscribe to this event to be notified after every updateSubReddit mutation.
+  updateSubReddit
+
+  # Subscribe to this event to be notified after every deleteSubReddit mutation.
+  deleteSubReddit
+}
+
+input SubRedditNameSubscriptionFilters {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: String
+
+  # Greater than.
+  gt: String
+
+  # Greater than or equal to.
+  gte: String
+
+  # Less than.
+  lt: String
+
+  # Less than or equal to.
+  lte: String
+
+  # Not equal to.
+  ne: String
+
+  # A two element tuple describing a range of values.
+  between: [String]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [String]
+
+  # A list of values to include.
+  in: [String]
+
+  # A list of values to exclude.
+  notIn: [String]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # A regular expression to match on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.
+  matches: String
+
+  # A regular expression to reject on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.
+  notMatches: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+input SubRedditNameWhereArgs {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: String
+
+  # Not equal to.
+  ne: String
+
+  # Greater than.
+  gt: String
+
+  # Greater than or equal to.
+  gte: String
+
+  # Less than.
+  lt: String
+
+  # Less than or equal to.
+  lte: String
+
+  # A two element tuple describing a range of values.
+  between: [String]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [String]
+
+  # A list of values to include.
+  in: [String]
+
+  # A list of values to exclude.
+  notIn: [String]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+input SubRedditOrderByArgs {
+  field: SubRedditOrderByField
+  direction: OrderByDirection
+}
+
+# Values for the SubRedditOrderByField enum
+enum SubRedditOrderByField {
+  createdAt
+  id
+  name
+  modifiedAt
+}
+
+# Subscription filter arguments for the SubReddit type
+input SubRedditSubscriptionFilter {
+  # Filter results for on the createdAt field.
+  createdAt: SubRedditCreatedAtSubscriptionFilters
+
+  # Filter results for on the id field.
+  id: SubRedditIdSubscriptionFilters
+
+  # Filter results for on the name field.
+  name: SubRedditNameSubscriptionFilters
+
+  # Filter results for on the modifiedAt field.
+  modifiedAt: SubRedditModifiedAtSubscriptionFilters
+}
+
+# A payload wrapper for mutation operations.
+type SubRedditSubscriptionPayload {
+  # The type of mutation operation that triggered this subscription.
+  mutation: SubRedditMutationEvent
+
+  # The object that was just mutated.
+  value: SubReddit
+  edge: SubRedditEdge
+}
+
+# Where filter arguments for the SubReddit type
+input SubRedditWhereArgs {
+  # Filter results for on the createdAt field.
+  createdAt: SubRedditCreatedAtWhereArgs
+
+  # Filter results for on the id field.
+  id: SubRedditIdWhereArgs
+
+  # Filter results for on the name field.
+  name: SubRedditNameWhereArgs
+
+  # Filter results based on a related object via the posts connection
+  posts: PostWhereArgs
+
+  # Filter results for on the modifiedAt field.
+  modifiedAt: SubRedditModifiedAtWhereArgs
+
+  # Combine mutiple where expressions using the OR operator.
+  OR: [SubRedditWhereArgs]
+
+  # Combine mutiple where expressions using the AND operator.
+  AND: [SubRedditWhereArgs]
+}
+
+type Subscription {
+  subscribeToRole(filter: RoleSubscriptionFilter, mutations: [RoleMutationEvent]!): RoleSubscriptionPayload
+  subscribeToSubReddit(filter: SubRedditSubscriptionFilter, mutations: [SubRedditMutationEvent]!): SubRedditSubscriptionPayload
+  subscribeToPost(filter: PostSubscriptionFilter, mutations: [PostMutationEvent]!): PostSubscriptionPayload
+  subscribeToFile(filter: FileSubscriptionFilter, mutations: [FileMutationEvent]!): FileSubscriptionPayload
+  subscribeToUser(filter: UserSubscriptionFilter, mutations: [UserMutationEvent]!): UserSubscriptionPayload
+}
+
+interface Timestamped {
+  modifiedAt: DateTime!
+  createdAt: DateTime!
+}
+
+# A Scaphold User.
+type Type implements Node {
+  # A global id
+  id: ID!
+  name: String!
+  description: String
+  kind: TypeKind
+  interfaces: [String]
+  fields: [Field]
+  permissions: [Permission]
+  values: [String]
+  isBridge: Boolean
+  position: Int
+  isEditable: Boolean
+  isDeletable: Boolean
+  isExtendable: Boolean
+  createdAt: DateTime
+  modifiedAt: DateTime
+}
+
+# Options for types that can be built on scaphold.
+enum TypeKind {
+  OBJECT
+  ENUM
+  INTERFACE
+}
+
+input UpdateFileInput {
+  name: String
+  id: ID!
+  blobFieldName: String
+
+  # An opaque string used by frontend frameworks like relay to track requests and responses.
+  clientMutationId: String
+}
+
+type UpdateFilePayload {
+  # The mutated File.
+  changedFile: File
+
+  # An edge containing the mutated File. Use this to update your client side cache.
+  changedEdge: FileEdge
+
+  # A view port into your application.
+  viewer: Viewer
+
+  # An opaque string used by frontend frameworks like relay to track requests and responses.
+  clientMutationId: String
+}
+
+input UpdatePostInput {
+  subRedditId: ID
+  id: ID!
+  title: String
+  url: String
+
+  # An opaque string used by frontend frameworks like relay to track requests and responses.
+  clientMutationId: String
+}
+
+type UpdatePostPayload {
+  # The mutated Post.
+  changedPost: Post
+
+  # An edge containing the mutated Post. Use this to update your client side cache.
+  changedEdge: PostEdge
+
+  # A view port into your application.
+  viewer: Viewer
+
+  # An opaque string used by frontend frameworks like relay to track requests and responses.
+  clientMutationId: String
+}
+
+input UpdateRoleInput {
+  name: String
+  id: ID!
+
+  # An opaque string used by frontend frameworks like relay to track requests and responses.
+  clientMutationId: String
+}
+
+type UpdateRolePayload {
+  # The mutated Role.
+  changedRole: Role
+
+  # An edge containing the mutated Role. Use this to update your client side cache.
+  changedEdge: RoleEdge
+
+  # A view port into your application.
+  viewer: Viewer
+
+  # An opaque string used by frontend frameworks like relay to track requests and responses.
+  clientMutationId: String
+}
+
+input UpdateSubRedditInput {
+  id: ID!
+  name: String
+
+  # An opaque string used by frontend frameworks like relay to track requests and responses.
+  clientMutationId: String
+}
+
+type UpdateSubRedditPayload {
+  # The mutated SubReddit.
+  changedSubReddit: SubReddit
+
+  # An edge containing the mutated SubReddit. Use this to update your client side cache.
+  changedEdge: SubRedditEdge
+
+  # A view port into your application.
+  viewer: Viewer
+
+  # An opaque string used by frontend frameworks like relay to track requests and responses.
+  clientMutationId: String
+}
+
+input UpdateUserInput {
+  password: Secret
+  id: ID!
+  username: String
+
+  # An opaque string used by frontend frameworks like relay to track requests and responses.
+  clientMutationId: String
+}
+
+type UpdateUserPayload {
+  # The mutated User.
+  changedUser: User
+
+  # An edge containing the mutated User. Use this to update your client side cache.
+  changedEdge: UserEdge
+
+  # A view port into your application.
+  viewer: Viewer
+
+  # An opaque string used by frontend frameworks like relay to track requests and responses.
+  clientMutationId: String
+}
+
+input UpdateUserRolesConnectionInput {
+  roleId: ID!
+  userId: ID!
+  accessLevel: AccessLevel!
+
+  # An opaque string used by frontend frameworks like relay to track requests and responses.
+  clientMutationId: String
+}
+
+type UpdateUserRolesConnectionPayload {
+  # The mutated UserRoles.
+  changedUserRoles: UserRoles
+
+  # An edge containing the mutated UserRoles. Use this to update your client side cache.
+  changedEdge: UserRolesEdge
+
+  # A view port into your application.
+  viewer: Viewer
+
+  # An opaque string used by frontend frameworks like relay to track requests and responses.
+  clientMutationId: String
+}
+
+# The User type
+type User implements Node, Timestamped {
+  # When paired with the Node interface, this is an automatically managed
+  #           timestamp that is set when an object is first created.
+  createdAt: DateTime!
+
+  # An automatically managed timestamp that is set every time a user logs in.
+  lastLogin: DateTime!
+
+  # A globally unique ID.
+  id: ID!
+
+  # When paired with the Node interface, this is an automatically managed
+  #           timestamp that is set whenever an object is mutated.
+  modifiedAt: DateTime!
+
+  # A list of roles in which this user is enrolled
+  roles(where: RoleWhereArgs, orderBy: [RoleOrderByArgs], first: Int, after: String, last: Int, before: String): UserRolesConnection
+
+  # The user's username.
+  username: String!
+}
+
+type UserAggregations {
+  # Returns the number of objects in the connection.
+  count: Int
+
+  # The minimum value for the field
+  min: UserAggregationsMin
+
+  # The maximum value for the field
+  max: UserAggregationsMax
+}
+
+type UserAggregationsMax {
+  createdAt: DateTime
+  lastLogin: DateTime
+  modifiedAt: DateTime
+  username: String
+}
+
+type UserAggregationsMin {
+  createdAt: DateTime
+  lastLogin: DateTime
+  modifiedAt: DateTime
+  username: String
+}
+
+# An edge wraps a node and a cursor. Edges are returned by
+#       Connection types as a standard way to paginate through connection values.
+type UserConnection {
+  # The set of edges in this page.
+  edges: [UserEdge]
+
+  # Metadata on the current page of data.
+  pageInfo: PageInfo!
+
+  # Aggregation operators for the User type.
+  aggregations: UserAggregations
+}
+
+input UserCreatedAtSubscriptionFilters {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: DateTime
+
+  # Greater than.
+  gt: DateTime
+
+  # Greater than or equal to.
+  gte: DateTime
+
+  # Less than.
+  lt: DateTime
+
+  # Less than or equal to.
+  lte: DateTime
+
+  # Not equal to.
+  ne: DateTime
+
+  # A two element tuple describing a range of values.
+  between: [DateTime]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [DateTime]
+
+  # A list of values to include.
+  in: [DateTime]
+
+  # A list of values to exclude.
+  notIn: [DateTime]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # A regular expression to match on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.
+  matches: String
+
+  # A regular expression to reject on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.
+  notMatches: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+input UserCreatedAtWhereArgs {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: DateTime
+
+  # Not equal to.
+  ne: DateTime
+
+  # Greater than.
+  gt: DateTime
+
+  # Greater than or equal to.
+  gte: DateTime
+
+  # Less than.
+  lt: DateTime
+
+  # Less than or equal to.
+  lte: DateTime
+
+  # A two element tuple describing a range of values.
+  between: [DateTime]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [DateTime]
+
+  # A list of values to include.
+  in: [DateTime]
+
+  # A list of values to exclude.
+  notIn: [DateTime]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+# An edge wraps a node and a cursor. Edges are returned by
+#       Connection types as a standard way to paginate through connection values.
+type UserEdge {
+  # The node value for the edge.
+  node: User!
+
+  # An opaque cursor pointing to an object in a connection.
+  #           Used by the 'after' and 'before' pagination arguments.
+  cursor: String!
+}
+
+input UserIdSubscriptionFilters {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: ID
+
+  # A list of values to include.
+  in: [ID]
+
+  # A list of values to exclude.
+  notIn: [ID]
+}
+
+input UserIdWhereArgs {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: ID
+
+  # Not equal to.
+  ne: ID
+
+  # A list of values to include.
+  in: [ID]
+
+  # A list of values to exclude.
+  notIn: [ID]
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+input UserLastLoginSubscriptionFilters {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: DateTime
+
+  # Greater than.
+  gt: DateTime
+
+  # Greater than or equal to.
+  gte: DateTime
+
+  # Less than.
+  lt: DateTime
+
+  # Less than or equal to.
+  lte: DateTime
+
+  # Not equal to.
+  ne: DateTime
+
+  # A two element tuple describing a range of values.
+  between: [DateTime]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [DateTime]
+
+  # A list of values to include.
+  in: [DateTime]
+
+  # A list of values to exclude.
+  notIn: [DateTime]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # A regular expression to match on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.
+  matches: String
+
+  # A regular expression to reject on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.
+  notMatches: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+input UserLastLoginWhereArgs {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: DateTime
+
+  # Not equal to.
+  ne: DateTime
+
+  # Greater than.
+  gt: DateTime
+
+  # Greater than or equal to.
+  gte: DateTime
+
+  # Less than.
+  lt: DateTime
+
+  # Less than or equal to.
+  lte: DateTime
+
+  # A two element tuple describing a range of values.
+  between: [DateTime]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [DateTime]
+
+  # A list of values to include.
+  in: [DateTime]
+
+  # A list of values to exclude.
+  notIn: [DateTime]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+input UserModifiedAtSubscriptionFilters {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: DateTime
+
+  # Greater than.
+  gt: DateTime
+
+  # Greater than or equal to.
+  gte: DateTime
+
+  # Less than.
+  lt: DateTime
+
+  # Less than or equal to.
+  lte: DateTime
+
+  # Not equal to.
+  ne: DateTime
+
+  # A two element tuple describing a range of values.
+  between: [DateTime]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [DateTime]
+
+  # A list of values to include.
+  in: [DateTime]
+
+  # A list of values to exclude.
+  notIn: [DateTime]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # A regular expression to match on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.
+  matches: String
+
+  # A regular expression to reject on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.
+  notMatches: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+input UserModifiedAtWhereArgs {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: DateTime
+
+  # Not equal to.
+  ne: DateTime
+
+  # Greater than.
+  gt: DateTime
+
+  # Greater than or equal to.
+  gte: DateTime
+
+  # Less than.
+  lt: DateTime
+
+  # Less than or equal to.
+  lte: DateTime
+
+  # A two element tuple describing a range of values.
+  between: [DateTime]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [DateTime]
+
+  # A list of values to include.
+  in: [DateTime]
+
+  # A list of values to exclude.
+  notIn: [DateTime]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+enum UserMutationEvent {
+  # Subscribe to this event to be notified after every loginUser mutation.
+  loginUser
+
+  # Subscribe to this event to be notified after every createUser mutation.
+  createUser
+
+  # Subscribe to this event to be notified after every updateUser mutation.
+  updateUser
+
+  # Subscribe to this event to be notified after every deleteUser mutation.
+  deleteUser
+}
+
+input UserOrderByArgs {
+  field: UserOrderByField
+  direction: OrderByDirection
+}
+
+# Values for the UserOrderByField enum
+enum UserOrderByField {
+  createdAt
+  lastLogin
+  password
+  id
+  modifiedAt
+  username
+}
+
+input UserPasswordSubscriptionFilters {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: Secret
+
+  # Greater than.
+  gt: Secret
+
+  # Greater than or equal to.
+  gte: Secret
+
+  # Less than.
+  lt: Secret
+
+  # Less than or equal to.
+  lte: Secret
+
+  # Not equal to.
+  ne: Secret
+
+  # A two element tuple describing a range of values.
+  between: [Secret]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [Secret]
+
+  # A list of values to include.
+  in: [Secret]
+
+  # A list of values to exclude.
+  notIn: [Secret]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # A regular expression to match on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.
+  matches: String
+
+  # A regular expression to reject on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.
+  notMatches: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+input UserPasswordWhereArgs {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: Secret
+
+  # Not equal to.
+  ne: Secret
+
+  # Greater than.
+  gt: Secret
+
+  # Greater than or equal to.
+  gte: Secret
+
+  # Less than.
+  lt: Secret
+
+  # Less than or equal to.
+  lte: Secret
+
+  # A two element tuple describing a range of values.
+  between: [Secret]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [Secret]
+
+  # A list of values to include.
+  in: [Secret]
+
+  # A list of values to exclude.
+  notIn: [Secret]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+# The UserRoles type
+type UserRoles implements Timestamped {
+  # The access level for this user enrollment.
+  accessLevel: AccessLevel!
+
+  # When paired with the Node interface, this is an automatically managed
+  #           timestamp that is set when an object is first created.
+  createdAt: DateTime!
+
+  # When paired with the Node interface, this is an automatically managed
+  #           timestamp that is set whenever an object is mutated.
+  modifiedAt: DateTime!
+  role: Role
+  user: User
+}
+
+input UserRolesAccessLevelWhereArgs {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: AccessLevel
+
+  # Not equal to.
+  ne: AccessLevel
+
+  # Greater than.
+  gt: AccessLevel
+
+  # Greater than or equal to.
+  gte: AccessLevel
+
+  # Less than.
+  lt: AccessLevel
+
+  # Less than or equal to.
+  lte: AccessLevel
+
+  # A two element tuple describing a range of values.
+  between: [AccessLevel]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [AccessLevel]
+
+  # A list of values to include.
+  in: [AccessLevel]
+
+  # A list of values to exclude.
+  notIn: [AccessLevel]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+# An edge wraps a node and a cursor. Edges are returned by
+#       Connection types as a standard way to paginate through connection values.
+type UserRolesConnection {
+  # The set of edges in this page.
+  edges: [UserRolesEdge]
+
+  # Metadata on the current page of data.
+  pageInfo: PageInfo!
+
+  # Aggregation operators for the Role type.
+  aggregations: RoleAggregations
+}
+
+input UserRolesCreatedAtWhereArgs {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: DateTime
+
+  # Not equal to.
+  ne: DateTime
+
+  # Greater than.
+  gt: DateTime
+
+  # Greater than or equal to.
+  gte: DateTime
+
+  # Less than.
+  lt: DateTime
+
+  # Less than or equal to.
+  lte: DateTime
+
+  # A two element tuple describing a range of values.
+  between: [DateTime]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [DateTime]
+
+  # A list of values to include.
+  in: [DateTime]
+
+  # A list of values to exclude.
+  notIn: [DateTime]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+# An edge wraps a node and a cursor. Edges are returned by
+#       Connection types as a standard way to paginate through connection values.
+type UserRolesEdge {
+  # The node value for the edge.
+  node: Role!
+
+  # An opaque cursor pointing to an object in a connection.
+  #           Used by the 'after' and 'before' pagination arguments.
+  cursor: String!
+
+  # The access level for this user enrollment.
+  accessLevel: AccessLevel!
+
+  # When paired with the Node interface, this is an automatically managed
+  #           timestamp that is set when an object is first created.
+  createdAt: DateTime!
+
+  # When paired with the Node interface, this is an automatically managed
+  #           timestamp that is set whenever an object is mutated.
+  modifiedAt: DateTime!
+}
+
+# Where filter arguments for the UserRoles type
+input UserRolesEdgeWhereArgs {
+  # Filter results based on values in the bridge model.
+  accessLevel: UserRolesAccessLevelWhereArgs
+
+  # Filter results based on values in the bridge model.
+  createdAt: UserRolesCreatedAtWhereArgs
+
+  # Filter results based on values in the bridge model.
+  modifiedAt: UserRolesModifiedAtWhereArgs
+}
+
+input UserRolesModifiedAtWhereArgs {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: DateTime
+
+  # Not equal to.
+  ne: DateTime
+
+  # Greater than.
+  gt: DateTime
+
+  # Greater than or equal to.
+  gte: DateTime
+
+  # Less than.
+  lt: DateTime
+
+  # Less than or equal to.
+  lte: DateTime
+
+  # A two element tuple describing a range of values.
+  between: [DateTime]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [DateTime]
+
+  # A list of values to include.
+  in: [DateTime]
+
+  # A list of values to exclude.
+  notIn: [DateTime]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+# Select objects by filtering on objects in a connection
+input UserRolesWhereArgs {
+  # Filter on values on the connection edge. E.G. Get all users with readonly membership to a role.
+  edge: UserRolesEdgeWhereArgs
+
+  # Filter on values in the target type. E.G. Get all users that are a member of the Executives role
+  node: RoleWhereArgs
+}
+
+# Subscription filter arguments for the User type
+input UserSubscriptionFilter {
+  # Filter results for on the createdAt field.
+  createdAt: UserCreatedAtSubscriptionFilters
+
+  # Filter results for on the lastLogin field.
+  lastLogin: UserLastLoginSubscriptionFilters
+
+  # Filter results for on the password field.
+  password: UserPasswordSubscriptionFilters
+
+  # Filter results for on the id field.
+  id: UserIdSubscriptionFilters
+
+  # Filter results for on the modifiedAt field.
+  modifiedAt: UserModifiedAtSubscriptionFilters
+
+  # Filter results for on the username field.
+  username: UserUsernameSubscriptionFilters
+}
+
+# A payload wrapper for mutation operations.
+type UserSubscriptionPayload {
+  # The type of mutation operation that triggered this subscription.
+  mutation: UserMutationEvent
+
+  # The object that was just mutated.
+  value: User
+  edge: UserEdge
+}
+
+input UserUsernameSubscriptionFilters {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: String
+
+  # Greater than.
+  gt: String
+
+  # Greater than or equal to.
+  gte: String
+
+  # Less than.
+  lt: String
+
+  # Less than or equal to.
+  lte: String
+
+  # Not equal to.
+  ne: String
+
+  # A two element tuple describing a range of values.
+  between: [String]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [String]
+
+  # A list of values to include.
+  in: [String]
+
+  # A list of values to exclude.
+  notIn: [String]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # A regular expression to match on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.
+  matches: String
+
+  # A regular expression to reject on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.
+  notMatches: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+input UserUsernameWhereArgs {
+  # Equal to. This takes a higher precedence than the other operators.
+  eq: String
+
+  # Not equal to.
+  ne: String
+
+  # Greater than.
+  gt: String
+
+  # Greater than or equal to.
+  gte: String
+
+  # Less than.
+  lt: String
+
+  # Less than or equal to.
+  lte: String
+
+  # A two element tuple describing a range of values.
+  between: [String]
+
+  # A two element tuple describing an excluded range of values.
+  notBetween: [String]
+
+  # A list of values to include.
+  in: [String]
+
+  # A list of values to exclude.
+  notIn: [String]
+
+  # A pattern to match for likeness.
+  like: String
+
+  # A pattern to match for likeness and exclude.
+  notLike: String
+
+  # Filters for null values. This takes precedence after 'eq' but before all other fields
+  isNull: Boolean
+}
+
+# Where filter arguments for the User type
+input UserWhereArgs {
+  # Filter results for on the createdAt field.
+  createdAt: UserCreatedAtWhereArgs
+
+  # Filter results for on the lastLogin field.
+  lastLogin: UserLastLoginWhereArgs
+
+  # Filter results for on the password field.
+  password: UserPasswordWhereArgs
+
+  # Filter results for on the id field.
+  id: UserIdWhereArgs
+
+  # Filter results for on the modifiedAt field.
+  modifiedAt: UserModifiedAtWhereArgs
+
+  # Filter results based on a related object via the roles connection
+  roles: UserRolesWhereArgs
+
+  # Filter results for on the username field.
+  username: UserUsernameWhereArgs
+
+  # Combine mutiple where expressions using the OR operator.
+  OR: [UserWhereArgs]
+
+  # Combine mutiple where expressions using the AND operator.
+  AND: [UserWhereArgs]
+}
+
+type Viewer implements Node {
+  id: ID!
+
+  # Sift through all objects of type 'Role'.
+  allRoles(where: RoleWhereArgs, orderBy: [RoleOrderByArgs], first: Int, after: String, last: Int, before: String): RoleConnection
+
+  # Sift through all objects of type 'SubReddit'.
+  allSubReddits(where: SubRedditWhereArgs, orderBy: [SubRedditOrderByArgs], first: Int, after: String, last: Int, before: String): SubRedditConnection
+
+  # Sift through all objects of type 'Post'.
+  allPosts(where: PostWhereArgs, orderBy: [PostOrderByArgs], first: Int, after: String, last: Int, before: String): PostConnection
+
+  # Sift through all objects of type 'File'.
+  allFiles(where: FileWhereArgs, orderBy: [FileOrderByArgs], first: Int, after: String, last: Int, before: String): FileConnection
+
+  # Sift through all objects of type 'User'.
+  allUsers(where: UserWhereArgs, orderBy: [UserOrderByArgs], first: Int, after: String, last: Int, before: String): UserConnection
+
+  # Returns the currently logged in user and is also the entry point for queries that leverage RELATION scoped permissions.
+  user: User
+}
